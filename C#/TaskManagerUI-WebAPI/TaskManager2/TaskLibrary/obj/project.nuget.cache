@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "tIXNkmYNywYvs9zDMH8f38/UKtNGBy20e9Tj+6LpVguU6yQu4qv2qZXRoHkxXb+W5WnP67YaEk9TMdJ3R8QlHQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Dylan\\Documents\\VSCode\\TaskManager2\\TaskLibrary\\TaskLibrary.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Dylan\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.2\\microsoft.netcore.platforms.5.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaskManager2.EditAPage">
+    <ContentPage.Content>
+        <StackLayout x:Name="AStack" Padding="50" Spacing="0" HorizontalOptions="Center">
+            <Label Text="Press restore buttons to restore to current value."/>
+            <Label Text="Enter the appointment's name:"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Entry x:Name="AName" Placeholder="Name..." PlaceholderColor="LightGray" IsSpellCheckEnabled="true"
+                       WidthRequest="300"/>
+                <Button Text="Restore" Clicked="OnClickedRestoreName"
+                    x:Name="RestoreName" HeightRequest="30" FontSize="13"/>
+            </StackLayout>
+            <Label Text="Enter the appointment's description:"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Entry x:Name="ADesc" Placeholder="Description..." PlaceholderColor="LightGray" IsSpellCheckEnabled="true"
+                       WidthRequest="300"/>
+                <Button Text="Restore" Clicked="OnClickedRestoreDesc"
+                    x:Name="RestoreDesc" HeightRequest="30" FontSize="13"/>
+            </StackLayout>
+            <Label Text="When does the meeting take place?"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <DatePicker x:Name="ADeadl"/>
+                <Button Text="Restore" Clicked="OnClickedRestoreDeadl"
+                    x:Name="RestoreDeadl" HeightRequest="30" FontSize="13"/>
+            </StackLayout>
+            <Label Text="When does the meeting start?"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <TimePicker x:Name="AStart" WidthRequest="300"/>
+                <Button Text="Restore" Clicked="OnClickedRestoreStart"
+                    x:Name="RestoreStart" HeightRequest="30" FontSize="13"/>
+            </StackLayout>
+            <Label Text="When does the meeting end?"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <TimePicker x:Name="AEnd" WidthRequest="300"/>
+                <Button Text="Restore" Clicked="OnClickedRestoreEnd"
+                    x:Name="RestoreEnd" HeightRequest="30" FontSize="13"/>
+            </StackLayout>
+            <Label Text="Please select the priority of the appointment:"/>
+            <StackLayout Orientation="Horizontal">
+                <Slider Maximum="5" x:Name="APriority" WidthRequest="230"
+                        ValueChanged="OnSliderValueChanged"/>
+                <Entry x:Name="SliderVal" IsReadOnly="True"
+                       HorizontalOptions="End"/>
+                <Button Text="Restore" Clicked="OnClickedRestorePriority"
+                    x:Name="RestorePriority" HeightRequest="30" FontSize="13"/>
+            </StackLayout>
+            <Label Text="Please enter the number of attendees:"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Entry x:Name="numAtt" Keyboard="Numeric" Placeholder="Number..." 
+                       PlaceholderColor="LightGray" MaxLength="2" TextChanged="Attendees_Entered"
+                       WidthRequest="300"/>
+                <Button Text="Restore" Clicked="OnClickedRestoreNum"
+                    x:Name="RestoreNumAtt" HeightRequest="30" FontSize="13"/>
+            </StackLayout>
+            <ScrollView>
+                <StackLayout x:Name="parent"/>
+            </ScrollView>
+            <Button Text="Enter" Clicked="OnClickedEditAppt"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

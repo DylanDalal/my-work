@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaskManager2.CreateTPage">
+    <ContentPage.Content>
+        <StackLayout x:Name="TStack" Padding="50" Spacing="0" HorizontalOptions="Center">
+            <Label Text="Enter the task's name:"/>
+            <Entry x:Name="TName" Placeholder="Name..." PlaceholderColor="LightGray"/>
+            <Label Text="Enter the task's description:"/>
+            <Entry x:Name="TDesc" Placeholder="Description..." PlaceholderColor="LightGray"/>
+            <Label Text="Enter the task's deadline:"/>
+            <DatePicker x:Name="TDeadl"/>
+            <Label Text="Please select the priority of the appointment:"/>
+            <StackLayout Orientation="Horizontal">
+                <Slider Maximum="5" x:Name="TPriority" WidthRequest="240"
+                        ValueChanged="OnSliderValueChanged"/>
+                <Entry x:Name="SliderVal" IsReadOnly="True"
+                       HorizontalOptions="End"/>
+            </StackLayout>
+            <Button Text="Enter" Clicked="OnPushedCreateTask"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

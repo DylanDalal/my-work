@@ -1,0 +1,8 @@
+C:\Users\Dylan\Documents\VSCode\TaskManager2\TaskMLibrary\bin\Debug\netstandard2.0\TaskLibrary.deps.json
+C:\Users\Dylan\Documents\VSCode\TaskManager2\TaskMLibrary\bin\Debug\netstandard2.0\TaskLibrary.dll
+C:\Users\Dylan\Documents\VSCode\TaskManager2\TaskMLibrary\bin\Debug\netstandard2.0\TaskLibrary.pdb
+C:\Users\Dylan\Documents\VSCode\TaskManager2\TaskMLibrary\obj\Debug\netstandard2.0\TaskLibrary.AssemblyInfoInputs.cache
+C:\Users\Dylan\Documents\VSCode\TaskManager2\TaskMLibrary\obj\Debug\netstandard2.0\TaskLibrary.AssemblyInfo.cs
+C:\Users\Dylan\Documents\VSCode\TaskManager2\TaskMLibrary\obj\Debug\netstandard2.0\TaskLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Dylan\Documents\VSCode\TaskManager2\TaskMLibrary\obj\Debug\netstandard2.0\TaskLibrary.dll
+C:\Users\Dylan\Documents\VSCode\TaskManager2\TaskMLibrary\obj\Debug\netstandard2.0\TaskLibrary.pdb

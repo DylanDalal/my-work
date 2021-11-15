@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaskManager2.CreatePage">
+    <ContentPage.Content>
+        <StackLayout Padding="50" Spacing="0" HorizontalOptions="Center">
+            <Label Text="Would you like to create a task or an appointment?"
+                HorizontalOptions="CenterAndExpand" />
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Text="Task"/>
+                <CheckBox x:Name="TBox" CheckedChanged="GoToTPage"/>
+                <Label Text="Appointment"/>
+                <CheckBox x:Name="ABox" CheckedChanged="GoToAPage"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

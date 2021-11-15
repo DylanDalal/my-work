@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaskManager2.ListPage">
+    <ContentPage.Content>
+        <ListView x:Name="MainListView">
+            <ListView.Header>
+                <StackLayout Orientation="Vertical" HorizontalOptions="Center"
+                                 Padding="10" Spacing="0" Margin="100,0" x:Name="StackL">
+                    <StackLayout Orientation="Horizontal">
+                        <SearchBar Placeholder="Search..." Margin="0,0,0,10" HorizontalOptions="Start"
+                                   SearchButtonPressed="SearchTextChanged" x:Name="SB"/>
+                        <Label Text="Sort by:"/>
+                        <Button Text="Default" Clicked="OnClickedSortDefault"
+                                x:Name="DefaultSort" HeightRequest="30" FontSize="13"/>
+                        <Button Text="Priority" Clicked="OnClickedSortPriority"
+                                x:Name="PrioritySort" HeightRequest="30" FontSize="13"/>
+                        <Button Text="Complete" Clicked="OnClickedSortComplete"
+                                x:Name="CompleteSort" HeightRequest="30" FontSize="13"/>
+                    </StackLayout>
+                    <Grid BackgroundColor="LightGray" ColumnDefinitions =".5*, .3*, 1*, 2*, .5*,
+                                        .5*, .5*, .5*, 1.5*">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Type" FontAttributes="Bold"/>
+                        <Label Grid.Row="0" Grid.Column="1" Text="Priority" FontAttributes="Bold"/>
+                        <Label Grid.Row="0" Grid.Column="2" Text="Name" FontAttributes="Bold"/>
+                        <Label Grid.Row="0" Grid.Column="3" Text="Description" FontAttributes="Bold"/>
+                        <Label Grid.Row="0" Grid.Column="4" Text="Date/Deadline" FontAttributes="Bold"/>
+                        <Label Grid.Row="0" Grid.Column="5" Text="Complete" FontAttributes="Bold"/>
+                        <Label Grid.Row="0" Grid.Column="6" Text="Start Time" FontAttributes="Bold"/>
+                        <Label Grid.Row="0" Grid.Column="7" Text="Stop Time" FontAttributes="Bold"/>
+                        <Label Grid.Row="0" Grid.Column="8" Text="Attendees" FontAttributes="Bold"/>
+                    </Grid>
+                </StackLayout>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ScrollView>
+                            <StackLayout Orientation="Vertical" HorizontalOptions="Center"
+                                 Padding="10" Spacing="0" Margin="100,0" x:Name="StackL">
+                                <Grid x:Name="DataGrid" ColumnDefinitions =".5*, .3*, 1*, 2*, .5*,
+                                        .5*, .5*, .5*, 1.5*" RowDefinitions=".1*">
+                                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding Type}" FontAttributes="Italic" HorizontalTextAlignment="End"/>
+                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding Priority}" FontAttributes="Bold" FontSize="17" HorizontalTextAlignment="Center"/>
+                                    <Label Grid.Row="0" Grid.Column="2" Text="{Binding Name}"/>
+                                    <Label Grid.Row="0" Grid.Column="3" Text="{Binding Description}"/>
+                                    <Label Grid.Row="0" Grid.Column="4" Text="{Binding Deadline}"/>
+                                    <Label Grid.Row="0" Grid.Column="5" Text="{Binding isCompleted}"/>
+                                    <Label Grid.Row="0" Grid.Column="6" Text="{Binding Start}"/>
+                                    <Label Grid.Row="0" Grid.Column="7" Text="{Binding Stop}"/>
+                                    <ScrollView Grid.Row="0" Grid.Column="8">
+                                        <Label Text="{Binding StrAtt}"/>
+                                    </ScrollView>
+                                </Grid>
+                            </StackLayout>
+                        </ScrollView>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage> 

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaskManager2.EditPage">
+    <ContentPage.Content>
+        <StackLayout x:Name="EStack" Padding="50" Spacing="0" HorizontalOptions="Center">
+            <Label Text="Enter the name of the item you would like to edit:"/>
+            <Entry x:Name="EName" Placeholder="Name..." PlaceholderColor="LightGray"/>
+            <Button Text="Enter" Clicked="OnPushedEditTask"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

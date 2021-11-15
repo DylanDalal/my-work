@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaskManager2.CreateAPage">
+    <ContentPage.Content>
+        <StackLayout Padding="50" Spacing="0" HorizontalOptions="Center">
+            <Label Text="Enter the appointment's name:"/>
+            <Entry x:Name="AName" Placeholder="Name..." PlaceholderColor="LightGray" IsSpellCheckEnabled="true"/>
+            <Label Text="Enter the appointment's description:"/>
+            <Entry x:Name="ADesc" Placeholder="Description..." PlaceholderColor="LightGray" IsSpellCheckEnabled="true"/>
+            <Label Text="When does the meeting take place?"/>
+            <DatePicker x:Name="ADeadl"/>
+            <Label Text="When does the meeting start?"/>
+            <TimePicker x:Name="AStart"/>
+            <Label Text="When does the meeting end?"/>
+            <TimePicker x:Name="AEnd"/>
+            <StackLayout Orientation="Horizontal">
+                <Slider Maximum="5" x:Name="APriority" WidthRequest="240"
+                        ValueChanged="OnSliderValueChanged"/>
+                <Entry x:Name="SliderVal" IsReadOnly="True"
+                       HorizontalOptions="End"/>
+            </StackLayout>
+            <Label Text="Please enter the number of attendees:"/>
+            <Entry x:Name="numAtt" Keyboard="Numeric" Placeholder="Number..." 
+                       PlaceholderColor="LightGray" MaxLength="2" TextChanged="Attendees_Entered"/>
+            <ScrollView>
+                <StackLayout x:Name="parent"/>
+            </ScrollView>
+            <Button Text="Enter" Clicked="OnPushedCreateAppointment" Margin="0,0,0,10"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
