@@ -1,0 +1,1 @@
+Omitted .net standard 2.0.
