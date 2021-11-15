@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"
+<!-- Dylan Dalal
+#    dmd19e
+#    2.16.21
+#    This work is the individual work of Dylan Dalal -->>
+<head>
+    <meta charset="UTF-8">
+    <title>Top 10 Restaurants</title>
+</head>
+<body>
+    <table border = 1>
+        <thead>
+        <td>Restaurant</td>
+        <td>Food</td>
+        <td>Service</td>
+        <td>Ambience</td>
+        <td>Price</td>
+        <td>Rating</td>
+        </thead>
+        {% for row in rows2 %}
+            <tr>
+                <td>{{row["Restaurant"]}}</td>
+                <td>{{row["Food"]}}</td>
+                <td>{{row["Service"]}}</td>
+                <td>{{row["Ambience"]}}</td>
+                <td>{{row["Price"]}}</td>
+                <td>{{row["Rating"]}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <p>&emsp;<A HREF="/">Back to home</A></p>
+</body>
+</html>

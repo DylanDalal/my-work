@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Dylan Dalal
+#    dmd19e
+#    2.16.21
+#    This work is the individual work of Dylan Dalal -->
+<head>
+    <meta charset="UTF-8">
+    <title>Add a Review</title>
+</head>
+<body>
+    <p></p>
+    <center>
+        <p>We'd love your input!</p>
+        <form action="{{ url_for('addrec') }}" method="POST">
+            <label for="un">Username:</label><br>
+            <input type="text" id="un" name="Username" maxlength="40" required><br>
+            <label for="rest">Restaurant:</label><br>
+            <input type="text" id="rest" name="Restaurant" maxlength="50" required><br>
+            <label for="food">Food:</label><br>
+            <input type="number" id="food" name="Food" max="5" min="1" value="5" required><br>
+            <label for="serv">Service:</label><br>
+            <input type="number" id="serv" name="Service" max="5" min="1" value="5" required><br>
+            <label for="amb">Ambience:</label><br>
+            <input type="number" id="amb" name="Ambience" max="5" min="1" value="5" required><br>
+            <label for="prc">Price:</label><br>
+            <input type="number" id="prc" name="Price" max="5" min="1" value="5" required><br>
+            <label for="oa">Rating:</label><br>
+            <input type="number" id="oa" name="Rating" max="5" min="1" value="5" required><br>
+            <label for="rev">Review:</label><br>
+            <textarea rows="5" cols="50" id="rev" name="Review" maxlength="500" required></textarea>
+            <p></p>
+            <input type="submit" value="Submit">
+        </form>
+    </center>
+    <p>&emsp;<A HREF="/">Back to home</A></p>
+</body>
+</html>

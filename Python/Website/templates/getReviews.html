@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Dylan Dalal
+#    dmd19e
+#    2.16.21
+#    This work is the individual work of Dylan Dalal -->
+<head>
+    <meta charset="UTF-8">
+    <title>Reviews</title>
+</head>
+<body>
+<center>
+    <p>See the reviews for this restaurant:</p>
+        <form action="{{ url_for('fetch') }}" method="POST">
+            <label for="rest">Restaurant:</label><br>
+            <input type="text" id="rest" name="rest" maxlength="50" required><br>
+            <p></p>
+            <input type="submit" value="Submit">
+        </form>
+    </center>
+    <p>&emsp;<A HREF="/">Back to home</A></p>
+</body>
+</html>

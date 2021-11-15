@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Dylan Dalal
+#    dmd19e
+#    2.16.21
+#    This work is the individual work of Dylan Dalal -->
+<head>
+    <meta charset="UTF-8">
+    <title>Reviews</title>
+</head>
+<body>
+    <table border = 1>
+        <thead>
+        <td>Username</td>
+        <td>Review</td>
+        <td>Rating</td>
+        </thead>
+        {% for row in rows %}
+            <tr>
+                <td>{{row["Username"]}}</td>
+                <td>{{row["Review"]}}</td>
+                <td>{{row["Rating"]}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <p>&emsp;<A HREF="/">Back to home</A></p>
+
+</body>
+</html>
