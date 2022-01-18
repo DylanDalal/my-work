@@ -1,0 +1,47 @@
+agentID	COUNT(buyerID)
+0	1
+1	1
+2	2
+3	2
+4	2
+address	mlsNumber
+56 West Dr	21901
+123 Circle St	22001
+12 Bisbee Dr	22002
+789 ShellIsland Way	22003
+78 Mountain Ln	22101
+345 Elbow St	22104
+address
+12 Bisbee Dr
+345 Elbow St
+address	price
+345 Elbow St	200000
+address	price
+19 SteinMart Way	654321
+agentId	AgentName	phone	FirmName	dateStarted
+0	Skeeter Jr	555-555-5555	Skeeters	2001-09-11
+1	Bob Barker	850-588-7625	Petes Real Estate	1972-12-23
+2	Bill Nice	567-555-5555	Jimmys Commercial Property	2015-11-11
+3	Jim Fallon	727-988-4242	Blue Realty	2003-12-14
+4	Famish Howard	800-867-5309	Sweets Suites	1989-02-09
+address	ownerName	price
+56 West Dr	Daniel Shadrick	10000000
+12 Bisbee Dr	Rosemary Haynes	324699
+name	name
+Bill Nice	Howard Duck
+Bill Nice	Charlie Sheen
+Bob Barker	Howard Duck
+Famish Howard	Dwayne Wade
+Famish Howard	Howard Duck
+Jim Fallon	Bucky Roberts
+Jim Fallon	Charlie Sheen
+Skeeter Jr	Andrew Jackson
+agentID	COUNT(buyerID)
+0	1
+1	1
+2	2
+3	2
+4	2
+address	ownerName	price	bedrooms	bathrooms	size
+12 Bisbee Dr	Rosemary Haynes	324699	3	2	45000
+345 Elbow St	William Holland	200000	3	2	47000
