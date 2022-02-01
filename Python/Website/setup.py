@@ -45,7 +45,6 @@ print('Tables Ratings and Reviews have been created.')
 nm = str("Dylan")
 
 for row in c.execute('SELECT * FROM Ratings;'):
-    print("fuck")
     print(row)
 
 
