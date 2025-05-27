@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TaskManager
 {
     class Program
     {
-        static void Main(string[] args)
+    static void Main(string[] args)
         {
             int input = 0;
             var list = new List<TaskObj>();
@@ -200,6 +197,7 @@ namespace TaskManager
             Console.WriteLine("6. List all tasks");
             Console.WriteLine("7. Quit");
         }
+
         public static void Goodbye()
         {
             Random rnd = new Random();
@@ -207,52 +205,8 @@ namespace TaskManager
                                   "Godspeed.", "Toodles~", "Hasta", "See ya!", "~Later",
                                   "Leaving so soon?", "What, are you bored?", "Don't go!!"};
             int mIndex = rnd.Next(goodbyes.Length);
-            Console.WriteLine("{0}", goodbyes[mIndex]);
+            Console.WriteLine(goodbyes[mIndex]);
             System.Threading.Thread.Sleep(700);
-        }
-    }
-
-    public class TaskObj 
-    {
-        private Task tsk;
-        private string name;
-        private string desc;
-        private string deadl;
-       
-        public TaskObj(string na, string des, string dea, Task t)
-        {
-            name = na;
-            desc = des;
-            deadl = dea;
-            tsk = t;
-        }
-        public Task Tsk   // property
-        {
-            get { return tsk; }   // get method
-            set { tsk = value; }  // set method
-        }
-
-        public string Name   // property
-        {
-            get { return name; }   // get method
-            set { name = value; }  // set method
-        }
-
-        public string Description   // property
-        {
-            get { return desc; }   // get method
-            set { desc = value; }  // set method
-        }
-
-        public string Deadline   // property
-        {
-            get { return deadl; }   // get method
-            set { deadl = value; }  // set method
-        }
-
-        public bool isCompleted   // property
-        {
-            get { return tsk.IsCompleted; }   // get method
         }
     }
 }
