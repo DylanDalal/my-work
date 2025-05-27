@@ -1,7 +1,0 @@
-C:\Users\Dylan\Documents\VSCode\TaskManager\TaskManager\bin\Debug\TaskManager.exe.config
-C:\Users\Dylan\Documents\VSCode\TaskManager\TaskManager\bin\Debug\TaskManager.exe
-C:\Users\Dylan\Documents\VSCode\TaskManager\TaskManager\bin\Debug\TaskManager.pdb
-C:\Users\Dylan\Documents\VSCode\TaskManager\TaskManager\obj\Debug\TaskManager.csproj.AssemblyReference.cache
-C:\Users\Dylan\Documents\VSCode\TaskManager\TaskManager\obj\Debug\TaskManager.csproj.CoreCompileInputs.cache
-C:\Users\Dylan\Documents\VSCode\TaskManager\TaskManager\obj\Debug\TaskManager.exe
-C:\Users\Dylan\Documents\VSCode\TaskManager\TaskManager\obj\Debug\TaskManager.pdb
