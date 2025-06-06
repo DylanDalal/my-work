@@ -1,19 +1,13 @@
 import cvxopt
 import cvxpy as cp
 import math
-    import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import numpy as np
 from cvxopt import solvers, matrix
 
 
 def SVM(X, y, cov, C=0.1, fullReport = True):
     samples, features = X.shape
-
-    # Generate Gram Matrix comparing to linear kernel
-    K = np.zeros((samples, samples))
-    for i in range(samples):
-        for j in range(samples):
-            K[i, j] = linear_kernel(X[i], X[j])
 
     # Create Kernel
     K = linear_kernel(X, X)
@@ -25,7 +19,7 @@ def SVM(X, y, cov, C=0.1, fullReport = True):
     A = matrix(y.reshape(1, -1))
     h = matrix(np.hstack((np.zeros(samples), np.ones(samples) * C)))
 
-    # Initiate value for b
+    # Equality constraint target: sum(alpha_i * y_i) = 0
     b = matrix(0.0)
 
     #####################################################################################
@@ -56,8 +50,8 @@ def SVM(X, y, cov, C=0.1, fullReport = True):
 
     # CVXOPT
     solution = solvers.qp(P, q, G, h, A, b)
-    alphas = np.array(solution['x'])
-    ctr = (alphas > 1e-4).flatten()
+    alphas = np.array(solution['x']).flatten()
+    ctr = (alphas > 1e-4)
     sv_x = X[ctr]
     sv_y = y[ctr]
     alphas = alphas[ctr]
@@ -72,11 +66,12 @@ def SVM(X, y, cov, C=0.1, fullReport = True):
         weight += alphas[n] * sv_y[n] * sv_x[n]
 
     # Predictions
-    pre = np.sum(linear_kernel(sv_x, X).T @ alphas * sv_y, axis=0) + b
+    kernel_matrix = linear_kernel(sv_x, X)
+    pre = np.sum(kernel_matrix * (alphas * sv_y)[:, np.newaxis], axis=0) + bias
     predictions = np.sign(pre)
 
     if fullReport:
-        for i in range(1, len(alphas)):
+        for i in range(len(alphas)):
             if i < 10:
                 print(str(i) + ".  " + str(sv_x[i]))
             else:
