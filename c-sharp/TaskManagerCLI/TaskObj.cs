@@ -5,46 +5,20 @@ namespace TaskManager
 {
     public class TaskObj
     {
-        private Task tsk;
-        private string name;
-        private string desc;
-        private string deadl;
-
-        public TaskObj(string na, string des, string dea, Task t)
+        public TaskObj(string name, string description, DateTime deadline, Task task)
         {
-            name = na;
-            desc = des;
-            deadl = dea;
-            tsk = t;
+            Name = name;
+            Description = description;
+            Deadline = deadline;
+            Tsk = task;
         }
 
-        public Task Tsk
-        {
-            get { return tsk; }
-            set { tsk = value; }
-        }
+        public Task Tsk { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
 
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
+        public DateTime Deadline { get; set; }
 
-        public string Description
-        {
-            get { return desc; }
-            set { desc = value; }
-        }
-
-        public string Deadline
-        {
-            get { return deadl; }
-            set { deadl = value; }
-        }
-
-        public bool isCompleted
-        {
-            get { return tsk.IsCompleted; }
-        }
+        public bool isCompleted => Tsk.IsCompleted;
     }
 }

@@ -1,212 +1,309 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace TaskManager
 {
     class Program
     {
-    static void Main(string[] args)
+        static List<TaskObj> list = new List<TaskObj>();
+
+        static void Main(string[] args)
         {
             int input = 0;
-            var list = new List<TaskObj>();
             while (input != 7)
             {
+                Console.Clear();
                 Menu();
-                input = Convert.ToInt32(Console.ReadLine());
-                switch (input)
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write("Select an option: ");
+                Console.ResetColor();
+
+                if (!int.TryParse(Console.ReadLine(), out input))
                 {
-                    case 1: // Create ----------------------------------------------------------------------------------------------------
-                        Console.WriteLine("Please provide a name for the task: ");
-                        string name = Console.ReadLine();
-                        Console.WriteLine("Please provide a description for the task: ");
-                        string desc = Console.ReadLine();
-                        Console.WriteLine("Please provide a deadline for the task: ");
-                        string deadline = Console.ReadLine();
-                        var t = new Task(() => Console.WriteLine("Task {0} completed!", name));
-                        var task1 = new TaskObj(name, desc, deadline, t);
-                        list.Add(task1);
-                        Console.WriteLine("Added");
-                        break;
-                        
-                    case 2: // Delete ----------------------------------------------------------------------------------------------------
-                        Console.WriteLine("Please give the name of the task you would like to complete: ");
-                        name = Console.ReadLine();
-                        for (int i = 0; i < list.Count; i++)
-                        {
-                            if (list[i].Name == name)
-                            {
-                                list.RemoveAt(i);
-                                break;
-                            }
-                        }
-                        break;
-
-                    case 3: // Edit ------------------------------------------------------------------------------------------------------
-                        Console.WriteLine("Please give the name of the task you would like to edit: ");
-                        name = Console.ReadLine();
-                        int counter = 0;
-                        bool found = false;
-                        for (int i = 0; i < list.Count; i++)
-                        {
-                            if (list[i].Name == name)
-                            {
-                                found = true;
-                                counter = i;
-                                bool loop = true;
-                                bool loop2 = true;
-                                while (loop)
-                                {
-                                    Console.WriteLine("Would you like to edit all aspects of the task? [Enter T/F]");
-                                    string edit = Console.ReadLine();
-                                    if (edit == "T")
-                                    {
-                                        Console.WriteLine("Give the task a new name:");
-                                        list[counter].Name = Console.ReadLine();
-                                        Console.WriteLine("Give the task a new description:");
-                                        list[counter].Description = Console.ReadLine();
-                                        Console.WriteLine("Give the task a deadline:");
-                                        list[counter].Deadline = Console.ReadLine();
-                                        list[counter].Tsk = new Task(() => Console.WriteLine("Task {0} completed!", list[counter].Name));
-                                        loop = false;
-                                    }
-                                    else if (edit == "F")
-                                    {
-                                        while (loop2)
-                                        {
-                                            Console.WriteLine("Would you like to edit the task name? [Enter T/F]");
-                                            string inp = Console.ReadLine();
-                                            if (inp == "T")
-                                            {
-                                                Console.WriteLine("Give the task a new name:");
-                                                list[counter].Name = Console.ReadLine();
-                                                loop2 = false;
-                                            }
-                                            else if (inp == "F")
-                                                loop2 = false;
-                                            else
-                                                Console.WriteLine("Invalid input.");
-                                        }
-                                        loop2 = true;
-                                        while (loop2)
-                                        {
-                                            Console.WriteLine("Would you like to edit the task description? [Enter T/F]");
-                                            string inp = Console.ReadLine();
-                                            if (inp == "T")
-                                            {
-                                                Console.WriteLine("Give the task a new description:");
-                                                list[counter].Description = Console.ReadLine();
-                                                loop2 = false;
-                                            }
-                                            else if (inp == "F")
-                                                loop2 = false;
-                                            else
-                                                Console.WriteLine("Invalid input.");
-                                        }
-                                        loop2 = true;
-                                        while (loop2)
-                                        {
-                                            Console.WriteLine("Would you like to edit the task deadline? [Enter T/F]");
-                                            string inp = Console.ReadLine();
-                                            if (inp == "T")
-                                            {
-                                                Console.WriteLine("Give the task a new deadline:");
-                                                list[counter].Deadline = Console.ReadLine();
-                                                loop2 = false;
-                                            }
-                                            else if (inp == "F")
-                                                loop2 = false;
-                                            else
-                                                Console.WriteLine("Invalid input.");
-                                        }
-                                        list[counter].Tsk = new Task(() => Console.WriteLine("Task {0} completed!", list[counter].Name));
-                                        loop = false;
-                                    }
-                                    else
-                                        Console.WriteLine("Invalid input.");
-                                }
-                                break;
-                            }
-                        }
-                        if (found == false)
-                            Console.WriteLine("Task {0} not found.", name);
-                        break;
-
-                    case 4: // Complete --------------------------------------------------------------------------------------------------
-                        Console.WriteLine("Enter the name of the task you would like to complete.");
-                        name = Console.ReadLine();
-                        for (int i = 0; i < list.Count; i++)
-                        {
-                            if (list[i].Name == name)
-                            {
-                                list[i].Tsk.Start();
-                                break;
-                            }
-                        }
-                        System.Threading.Thread.Sleep(700);
-                        break;
-
-                    case 5: // List ------------------------------------------------------------------------------------------------------
-                        if (list.Count == 0)
-                            Console.WriteLine("This list is empty!");
-                        for (int i = 0; i < list.Count; i++)
-                        {
-                            if (list[i].isCompleted == false)
-                            {
-                                Console.WriteLine("Task #{0}:", i + 1);
-                                Console.WriteLine("Name:\t\t{0}", list[i].Name);
-                                Console.WriteLine("Description:\t{0}", list[i].Description);
-                                Console.WriteLine("Deadline:\t{0}", list[i].Deadline);
-                                Console.WriteLine("Status:\t\tIncomplete");
-                            }
-                        }
-                        break;
-
-                    case 6: // List ------------------------------------------------------------------------------------------------------
-                        if (list.Count == 0)
-                            Console.WriteLine("This list is empty!");
-                        for (int i = 0; i < list.Count; i++)
-                        {
-                            Console.WriteLine("Task #{0}:", i + 1);
-                            Console.WriteLine("Name:\t\t{0}", list[i].Name);
-                            Console.WriteLine("Description:\t{0}", list[i].Description);
-                            Console.WriteLine("Deadline:\t{0}", list[i].Deadline);
-                            if (list[i].isCompleted)
-                                Console.WriteLine("Status:\t\tCompleted");
-                            else
-                                Console.WriteLine("Status:\t\tIncomplete");
-                        }
-                        break;
-
-                    case 7: // End -------------------------------------------------------------------------------------------------------
-                        Goodbye();
-                        break;
-
+                    ShowError("Invalid input.");
+                    continue;
                 }
 
+                switch (input)
+                {
+                    case 1: CreateTask(); break;
+                    case 2: DeleteTask(); break;
+                    case 3: EditTask(); break;
+                    case 4: CompleteTask(); break;
+                    case 5: ListTasks(false); break;
+                    case 6: ListTasks(true); break;
+                    case 7: Goodbye(); break;
+                    default: ShowError("Invalid option."); break;
+                }
+
+                if (input != 7)
+                {
+                    Pause();
+                }
             }
         }
 
-        public static void Menu()
+        static void Menu()
         {
-            Console.WriteLine("\nType the number to perform an action: ");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("========== Task Manager ==========");
+            Console.ResetColor();
             Console.WriteLine("1. Create a new task");
-            Console.WriteLine("2. Delete an existing task");
-            Console.WriteLine("3. Edit an existing task");
+            Console.WriteLine("2. Delete a task");
+            Console.WriteLine("3. Edit a task");
             Console.WriteLine("4. Complete a task");
-            Console.WriteLine("5. List all outstanding (incomplete) tasks");
+            Console.WriteLine("5. List incomplete tasks");
             Console.WriteLine("6. List all tasks");
             Console.WriteLine("7. Quit");
+            Console.WriteLine("==================================");
         }
 
-        public static void Goodbye()
+        static void CreateTask()
         {
-            Random rnd = new Random();
-            string[] goodbyes = { "Goodbye!", "Thank you for your time!", "Farewell!",
-                                  "Godspeed.", "Toodles~", "Hasta", "See ya!", "~Later",
-                                  "Leaving so soon?", "What, are you bored?", "Don't go!!"};
-            int mIndex = rnd.Next(goodbyes.Length);
-            Console.WriteLine(goodbyes[mIndex]);
-            System.Threading.Thread.Sleep(700);
+            Console.Write("Task name: ");
+            string name = Console.ReadLine();
+            Console.Write("Description: ");
+            string desc = Console.ReadLine();
+
+            DateTime deadline;
+            while (true)
+            {
+                Console.Write("Deadline (MM/dd/yyyy): ");
+                string input = Console.ReadLine();
+                if (DateTime.TryParseExact(input, "MM/dd/yyyy", null, System.Globalization.DateTimeStyles.None, out deadline))
+                    break;
+
+                ShowError("Invalid date format. Please use MM/dd/yyyy.");
+            }
+
+            var t = new Task(() => {});
+            list.Add(new TaskObj(name, desc, deadline, t));
+            ShowSuccess("Task added.");
+        }
+
+        static void DeleteTask()
+        {
+            int index = GetTaskIndex("Enter the task number to delete:");
+            if (index == -1) return;
+
+            Console.Write($"Are you sure you want to delete '{list[index].Name}'? (Y/N): ");
+            if (Console.ReadLine().Trim().ToUpper() == "Y")
+            {
+                list.RemoveAt(index);
+                ShowSuccess("Task deleted.");
+            }
+        }
+
+        static void EditTask()
+        {
+            int index = GetTaskIndex("Enter the task number to edit:");
+            if (index == -1) return;
+
+            var task = list[index];
+
+            Console.WriteLine($"\nCurrent Task:");
+            PrintTruncatedTask(task, index + 1);
+
+            Console.WriteLine("\nWhat would you like to edit?");
+            Console.WriteLine("1. Name\n2. Description\n3. Deadline\n4. All");
+
+            if (!int.TryParse(Console.ReadLine(), out int choice))
+            {
+                ShowError("Invalid selection.");
+                return;
+            }
+
+            switch (choice)
+            {
+                case 1: EditTaskName(task); break;
+                case 2: EditTaskDescription(task); break;
+                case 3: EditTaskDeadline(task); break;
+                case 4: EditTaskName(task); EditTaskDescription(task); EditTaskDeadline(task); break;
+                default: ShowError("Invalid option."); return;
+            }
+
+            task.Tsk = new Task(() => {});
+            ShowSuccess("Task updated.");
+        }
+
+        static void EditTaskName(TaskObj task)
+        {
+            Console.Write("New name: ");
+            task.Name = Console.ReadLine();
+        }
+
+        static void EditTaskDescription(TaskObj task)
+        {
+            Console.Write("New description: ");
+            task.Description = Console.ReadLine();
+        }
+
+        static void EditTaskDeadline(TaskObj task)
+        {
+            task.Deadline = PromptForDate("New deadline (MM/dd/yyyy): ");
+        }
+
+        static void PrintTruncatedTask(TaskObj task, int number)
+        {
+            string name = Truncate(task.Name, 50);
+            string desc = Truncate(task.Description, 50);
+            string due = task.Deadline.ToString("MM/dd/yyyy");
+
+            Console.Write($"[{number}] ");
+            if (task.isCompleted)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write("[✔]");
+            }
+            else
+            {
+                Console.Write("[ ]");
+            }
+            Console.ResetColor();
+
+            Console.WriteLine($" {name} (Due: {due})");
+            Console.WriteLine($"    Description: {desc}");
+        }
+
+        static string Truncate(string input, int maxLength)
+        {
+            if (string.IsNullOrEmpty(input)) return input;
+            return input.Length <= maxLength ? input : input.Substring(0, maxLength - 3) + "...";
+        }
+
+        static void CompleteTask()
+        {
+            int index = GetTaskIndex("Enter the task number to complete:");
+            if (index == -1) return;
+
+            var t = list[index];
+
+            if (t.isCompleted)
+            {
+                ShowInfo($"Task '{t.Name}' is already completed.");
+                return;
+            }
+
+            try
+            {
+                t.Tsk.Start();
+
+                Console.Write("Completing");
+                for (int i = 0; i < 3; i++) { Thread.Sleep(300); Console.Write("."); }
+                Console.WriteLine();
+
+                Thread.Sleep(100); // short pause before success message
+                ShowSuccess($"Task '{t.Name}' marked as completed!");
+            }
+            catch (InvalidOperationException)
+            {
+                ShowError("This task has already been completed and cannot be started again.");
+            }
+        }
+
+        static void ListTasks(bool showAll)
+        {
+            if (list.Count == 0)
+            {
+                ShowInfo("No tasks found.");
+                return;
+            }
+
+            Console.WriteLine();
+            for (int i = 0; i < list.Count; i++)
+            {
+                var task = list[i];
+                if (!showAll && task.isCompleted) continue;
+
+                Console.Write($"[{i + 1}] ");
+                if (task.isCompleted)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write("[✔]");
+                }
+                else
+                {
+                    Console.Write("[ ]");
+                }
+                Console.ResetColor();
+                Console.WriteLine($" {task.Name} (Due: {task.Deadline:MM/dd/yyyy})");
+
+                Console.WriteLine($"    Description: {task.Description}");
+            }
+        }
+
+        static DateTime PromptForDate(string prompt)
+        {
+            while (true)
+            {
+                Console.Write(prompt);
+                string input = Console.ReadLine();
+                if (DateTime.TryParseExact(input, "MM/dd/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime date))
+                    return date;
+
+                ShowError("Invalid date format. Please use MM/dd/yyyy.");
+            }
+        }
+
+        static int GetTaskIndex(string prompt)
+        {
+            if (list.Count == 0)
+            {
+                ShowInfo("No tasks available.");
+                return -1;
+            }
+
+            ListTasks(true);
+            Console.Write(prompt + " ");
+            if (!int.TryParse(Console.ReadLine(), out int idx) || idx < 1 || idx > list.Count)
+            {
+                ShowError("Invalid task number.");
+                return -1;
+            }
+
+            return idx - 1;
+        }
+
+        static void Pause()
+        {
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write("Press Enter to continue...");
+            Console.ResetColor();
+            Console.ReadLine();
+        }
+
+        static void Goodbye()
+        {
+            var goodbyes = new[] {
+                "Goodbye!", "Thank you for your time!", "Farewell!", "Godspeed.", 
+                "Toodles!", "Hasta", "See ya!", "Later", "Leaving so soon?", 
+                "What, are you bored?", "Don't go!!"
+            };
+            Console.WriteLine("\n" + goodbyes[new Random().Next(goodbyes.Length)]);
+        }
+
+        static void ShowError(string msg)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Error: " + msg);
+            Console.ResetColor();
+        }
+
+        static void ShowSuccess(string msg)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(msg);
+            Console.ResetColor();
+        }
+
+        static void ShowInfo(string msg)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine(msg);
+            Console.ResetColor();
         }
     }
 }
